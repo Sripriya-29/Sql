@@ -1,0 +1,203 @@
+USE [CaseStudy]
+GO
+/****** Object:  Table [dbo].[Claim]    Script Date: 25-10-2022 14:16:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Claim](
+	[ClaimId] [int] IDENTITY(1000000000,1) NOT NULL,
+	[MemberId] [int] NULL,
+	[MemberName] [varchar](255) NULL,
+	[DOB] [date] NULL,
+	[DateOfAdmission] [date] NULL,
+	[DateOfDischarge] [date] NULL,
+	[ProviderName] [varchar](255) NULL,
+	[BillAmount] [float] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ClaimId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Dependent]    Script Date: 25-10-2022 14:16:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Dependent](
+	[DependentId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](255) NULL,
+	[DOB] [date] NULL,
+	[MemberId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[DependentId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Members]    Script Date: 25-10-2022 14:16:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Members](
+	[Id] [int] IDENTITY(100,1) NOT NULL,
+	[MemberId]  AS ('R-'+CONVERT([varchar](10),[Id])),
+	[Name] [varchar](255) NULL,
+	[Address] [varchar](255) NULL,
+	[State] [varchar](255) NULL,
+	[Country] [varchar](255) NULL,
+	[Email] [varchar](255) NULL,
+	[PAN] [varchar](12) NULL,
+	[ContactNo] [int] NULL,
+	[DOB] [date] NULL,
+	[Password] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Claim] ON 
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000000, 100, N'Sripriya', CAST(N'1997-08-29' AS Date), CAST(N'2022-08-29' AS Date), CAST(N'2022-09-28' AS Date), N'Apollo', 200000)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000001, 101, N'Priya', CAST(N'1997-09-28' AS Date), CAST(N'2022-09-26' AS Date), CAST(N'2022-09-28' AS Date), N'Care Hospitals', 300000)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000002, 113, N'sri', CAST(N'1997-09-28' AS Date), CAST(N'2002-09-26' AS Date), CAST(N'2022-09-28' AS Date), N'Kims', 400000)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000003, 100, N'Priya', CAST(N'2022-09-01' AS Date), CAST(N'2022-09-22' AS Date), CAST(N'2022-09-28' AS Date), N'Sunshine Hospitals', 500000)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000005, 113, N'Pkb', CAST(N'2020-09-01' AS Date), CAST(N'2022-09-22' AS Date), CAST(N'2022-09-29' AS Date), N'Hosp', 500000)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000006, 114, N'Elephant', CAST(N'2000-09-01' AS Date), CAST(N'2022-09-20' AS Date), CAST(N'2022-09-29' AS Date), N'Hosp', 400000)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000007, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-09-22' AS Date), CAST(N'2022-10-01' AS Date), N'Apollo', 1234567890)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000008, 114, N'Harsha', CAST(N'1994-09-07' AS Date), CAST(N'2022-09-14' AS Date), CAST(N'2022-09-30' AS Date), N'KIMS', 1234567890)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000018, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-10-07' AS Date), CAST(N'2022-10-07' AS Date), N'Apollo', 12345)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000019, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-10-06' AS Date), CAST(N'2022-10-08' AS Date), N'apollo', 12223456)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000020, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-10-05' AS Date), CAST(N'2022-10-12' AS Date), N'Apollo', 123456)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000021, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-10-05' AS Date), CAST(N'2022-10-07' AS Date), N'Sunshine Hospitals', 12334)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000022, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-10-07' AS Date), CAST(N'2022-10-08' AS Date), N'Sunshine Hospitals', 123456)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000023, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-10-11' AS Date), CAST(N'2022-10-12' AS Date), N'Sunshine Hospitals', 12340)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000024, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-10-11' AS Date), CAST(N'2022-10-12' AS Date), N'KIMS', 123445)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000025, 114, N'Elephant', CAST(N'2000-09-30' AS Date), CAST(N'2022-10-12' AS Date), CAST(N'2022-10-13' AS Date), N'KIMS', 1000)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000027, 115, N'ele', CAST(N'2000-10-12' AS Date), CAST(N'2022-10-10' AS Date), CAST(N'2022-10-11' AS Date), N'Apollo', 100000)
+GO
+INSERT [dbo].[Claim] ([ClaimId], [MemberId], [MemberName], [DOB], [DateOfAdmission], [DateOfDischarge], [ProviderName], [BillAmount]) VALUES (1000000028, 138, N'Sarada', CAST(N'1961-02-12' AS Date), CAST(N'2022-10-18' AS Date), CAST(N'2022-10-21' AS Date), N'Apollo', 10000)
+GO
+SET IDENTITY_INSERT [dbo].[Claim] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Dependent] ON 
+GO
+INSERT [dbo].[Dependent] ([DependentId], [Name], [DOB], [MemberId]) VALUES (1, N'Sarada', CAST(N'2022-04-11' AS Date), 114)
+GO
+INSERT [dbo].[Dependent] ([DependentId], [Name], [DOB], [MemberId]) VALUES (11, N'srip', CAST(N'2022-10-04' AS Date), 113)
+GO
+INSERT [dbo].[Dependent] ([DependentId], [Name], [DOB], [MemberId]) VALUES (12, N'Test', CAST(N'2022-09-28' AS Date), 113)
+GO
+INSERT [dbo].[Dependent] ([DependentId], [Name], [DOB], [MemberId]) VALUES (15, N'Sarada', CAST(N'1961-02-12' AS Date), 138)
+GO
+SET IDENTITY_INSERT [dbo].[Dependent] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Members] ON 
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (100, N'Sripriya', N'Vizag', N'AP', N'India', N'updates2@gmail.com', N'Abb1234', 1023456789, CAST(N'1997-08-29' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (101, N'Priya', N'HYD', N'TS', N'India', N'updat@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'1997-08-29' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (102, N'Sri', N'Vizag', N'AP', N'India', N'eleps@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2000-09-28' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (103, N'srip', N'address', N'string', N'india', N'hh ', N'pan', 12345, CAST(N'2022-09-28' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (104, N'srip', N'Vizag', N'AP', N'india', N'elep@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2022-09-28' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (105, N'PS', N'HYD', N'TS', N'india', N'ele@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2022-09-28' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (106, N'sp', N'PS', N'AP', N'india', N'srip@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2022-09-24' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (107, N'elep', N'PS', N'AP', N'india', N'srip@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2022-09-22' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (108, N'srip', N'PS', N'AP', N'india', N'srip@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2022-09-22' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (109, N'ele', N'vzg', N'ap', N'india', N'srip@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2022-09-22' AS Date), NULL)
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (110, N'example', N'hyd', N'ts', N'india', N'ex@gmail.com', N'BBB1235B', 1234567890, CAST(N'2020-09-29' AS Date), N'123456')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (111, N'psb', N'Vzg', N'AP', N'India', N'psb@gmail.com', N'BUPP1234B', 1234567890, CAST(N'2022-09-22' AS Date), N'123456')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (112, N'psbj', N'HYD', N'TS', N'India', N'psbj@gmail.com', N'BUPP1234B', 1234567890, CAST(N'2019-09-30' AS Date), N'123456')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (113, N'PKB', N'Vizag', N'AP', N'India', N'pkb@gmail.com', N'BUPP1234B', 1234567890, CAST(N'2000-09-30' AS Date), N'MTIzNDU2')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (114, N'Elephant', N'He', N'Ts', N'India', N'elephant@gmail.com', N'BUPP1234B1', 1234567890, CAST(N'2000-09-30' AS Date), N'MTIzNDU2')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (115, N'sripriya12', N'PS', N'AP', N'india', N'srip@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2022-10-01' AS Date), N'MTIzNDU2')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (116, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-04' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (117, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-04' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (118, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-04' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (119, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-04' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (120, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-04' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (121, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-06' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (122, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-20' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (123, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-12' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (124, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-03' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (125, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-07' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (126, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-07' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (127, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-07' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (128, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-07' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (129, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-07' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (130, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-07' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (131, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-07' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (132, N'', N'', N'', N'', N'', N'', 0, CAST(N'2022-10-07' AS Date), N'')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (133, N'priyaP', N'kondapur', N'TS', N'India', N'priyap@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2020-09-22' AS Date), N'MTIzNDU2')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (134, N'eles', N'vizag', N'ap', N'india', N'ap@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'1997-09-29' AS Date), N'MTIzNDU2')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (135, N'srip', N'vizag', N'AP', N'India', N'sripiya@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2022-10-20' AS Date), N'MTIzNDU2')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (136, N'sripriyaJ', N'kondapur', N'AP', N'India', N'sri@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2000-08-29' AS Date), N'MTIzNDU2')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (137, N'ps', N'kondapur', N'AP', N'India', N'sripiya@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2000-08-29' AS Date), N'MTIzNDU2')
+GO
+INSERT [dbo].[Members] ([Id], [Name], [Address], [State], [Country], [Email], [PAN], [ContactNo], [DOB], [Password]) VALUES (138, N'sripriyas', N'kondapur', N'AP', N'India', N'sri@gmail.com', N'BAPPJ1234B', 1234567890, CAST(N'2000-08-29' AS Date), N'MTIzNDU2')
+GO
+SET IDENTITY_INSERT [dbo].[Members] OFF
+GO
+ALTER TABLE [dbo].[Claim]  WITH CHECK ADD FOREIGN KEY([MemberId])
+REFERENCES [dbo].[Members] ([Id])
+GO
+ALTER TABLE [dbo].[Dependent]  WITH CHECK ADD FOREIGN KEY([MemberId])
+REFERENCES [dbo].[Members] ([Id])
+GO
+ALTER TABLE [dbo].[Claim]  WITH CHECK ADD CHECK  (([ClaimId]>=(1000000000) AND [ClaimId]<=(9999999999.)))
+GO
